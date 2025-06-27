@@ -1,6 +1,6 @@
 # Command Runner
 
-![Command Runner Logo](media/icon.png)
+![commandrunner](https://github.com/user-attachments/assets/85e6c901-2df9-483a-b113-72b6869c22b2)
 
 A VS Code extension to intelligently manage and run custom npm commands with advanced package.json discovery capabilities.
 
