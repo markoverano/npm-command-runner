@@ -1,0 +1,283 @@
+/* VS Code Extension Webview Shared Styles */
+/* This file contains common styling patterns for consistent UI across webviews */
+
+/* CSS Custom Properties for VS Code Theme Integration */
+:root {
+    /* Fallback values for better compatibility */
+    --vscode-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --vscode-font-size: 13px;
+    --vscode-editor-font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    
+    /* Spacing scale */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+    --spacing-xl: 20px;
+    --spacing-2xl: 24px;
+    --spacing-3xl: 32px;
+    
+    /* Border radius scale */
+    --radius-sm: 3px;
+    --radius-md: 4px;
+    --radius-lg: 6px;
+    
+    /* Transition timing */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-medium: 0.25s ease-in-out;
+}
+
+/* Base styles */
+.webview-body {
+    font-family: var(--vscode-font-family);
+    font-size: var(--vscode-font-size);
+    line-height: 1.5;
+    padding: var(--spacing-2xl);
+    margin: 0;
+    color: var(--vscode-foreground);
+    background-color: var(--vscode-editor-background);
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Container utilities */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container-narrow {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* Header styles */
+.header {
+    border-bottom: 1px solid var(--vscode-panel-border, var(--vscode-widget-border, rgba(128, 128, 128, 0.35)));
+    padding-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--vscode-foreground);
+}
+
+.header-subtitle {
+    font-size: var(--vscode-font-size);
+    color: var(--vscode-descriptionForeground, var(--vscode-foreground));
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* Section styles */
+.section {
+    margin-bottom: var(--spacing-3xl);
+    background: var(--vscode-editor-inactiveSelectionBackground, rgba(128, 128, 128, 0.05));
+    border: 1px solid var(--vscode-panel-border, var(--vscode-widget-border, rgba(128, 128, 128, 0.35)));
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 var(--spacing-lg) 0;
+    color: var(--vscode-foreground);
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.form-group:last-of-type {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    font-size: var(--vscode-font-size);
+    color: var(--vscode-foreground);
+}
+
+.form-label-description {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--vscode-descriptionForeground, var(--vscode-foreground));
+    margin-top: 2px;
+    opacity: 0.8;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px var(--spacing-md);
+    border: 1px solid var(--vscode-input-border, var(--vscode-widget-border, rgba(128, 128, 128, 0.35)));
+    background-color: var(--vscode-input-background);
+    color: var(--vscode-input-foreground);
+    border-radius: var(--radius-md);
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: var(--vscode-font-size);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus {
+    border-color: var(--vscode-focusBorder, var(--vscode-button-background));
+    outline: none;
+    box-shadow: 0 0 0 1px var(--vscode-focusBorder, var(--vscode-button-background));
+}
+
+.form-input::placeholder {
+    color: var(--vscode-input-placeholderForeground, var(--vscode-descriptionForeground));
+    opacity: 1;
+}
+
+/* Button styles */
+.button {
+    background-color: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    padding: 10px var(--spacing-xl);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--vscode-font-size);
+    font-family: inherit;
+    font-weight: 500;
+    min-width: 80px;
+    transition: background-color var(--transition-fast);
+}
+
+.button:hover {
+    background-color: var(--vscode-button-hoverBackground);
+}
+
+.button:focus {
+    outline: 1px solid var(--vscode-focusBorder, var(--vscode-button-background));
+    outline-offset: 2px;
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.button-secondary {
+    background-color: var(--vscode-button-secondaryBackground, transparent);
+    color: var(--vscode-button-secondaryForeground, var(--vscode-foreground));
+    border: 1px solid var(--vscode-button-border, var(--vscode-widget-border, rgba(128, 128, 128, 0.35)));
+}
+
+.button-secondary:hover {
+    background-color: var(--vscode-button-secondaryHoverBackground, var(--vscode-list-hoverBackground));
+}
+
+.button-container {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--vscode-panel-border, var(--vscode-widget-border, rgba(128, 128, 128, 0.35)));
+}
+
+/* Badge styles */
+.badge {
+    background: var(--vscode-badge-background, var(--vscode-button-background));
+    color: var(--vscode-badge-foreground, var(--vscode-button-foreground));
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Code and monospace styles */
+.code {
+    font-family: var(--vscode-editor-font-family);
+    font-size: 12px;
+    background: var(--vscode-textCodeBlock-background, var(--vscode-editor-selectionBackground, rgba(128, 128, 128, 0.1)));
+    padding: 2px var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    word-break: break-all;
+}
+
+.code-block {
+    font-family: var(--vscode-editor-font-family);
+    background: var(--vscode-textBlockQuote-background, var(--vscode-editor-background));
+    color: var(--vscode-foreground);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--vscode-panel-border, var(--vscode-widget-border, rgba(128, 128, 128, 0.35)));
+    font-size: 12px;
+    word-break: break-all;
+}
+
+/* Grid utilities */
+.grid-2col {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-md) var(--spacing-xl);
+    align-items: center;
+}
+
+.grid-2col-start {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-md) var(--spacing-xl);
+    align-items: start;
+}
+
+/* Text utilities */
+.text-label {
+    font-weight: 600;
+    color: var(--vscode-textPreformat-foreground, var(--vscode-foreground));
+    font-size: var(--vscode-font-size);
+}
+
+.text-muted {
+    color: var(--vscode-descriptionForeground, var(--vscode-foreground));
+    opacity: 0.8;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Empty state styles */
+.empty-state {
+    text-align: center;
+    color: var(--vscode-descriptionForeground, var(--vscode-foreground));
+    font-style: italic;
+    padding: var(--spacing-xl);
+    opacity: 0.7;
+}
+
+.empty-state-icon {
+    display: block;
+    font-size: 24px;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Spacing utilities */
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+.mb-2xl { margin-bottom: var(--spacing-2xl); }
+.mb-3xl { margin-bottom: var(--spacing-3xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+.mt-2xl { margin-top: var(--spacing-2xl); }
+.mt-3xl { margin-top: var(--spacing-3xl); }

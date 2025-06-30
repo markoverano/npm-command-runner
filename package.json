@@ -1,0 +1,149 @@
+{
+  "name": "npm-command-runner",
+  "displayName": "NPM Command Runner",
+  "description": "A VS Code extension to manage and run custom npm commands with one click.",
+  "version": "0.0.2",
+  "publisher": "markoverano",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "media/icon.png",
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "command-runner-container",
+          "title": "NPM Command Runner",
+          "icon": "media/icon-simple.svg"
+        }
+      ]
+    },
+    "views": {
+      "command-runner-container": [
+        {
+          "id": "command-runner-sidebar",
+          "name": "Commands",
+          "icon": "$(list-unordered)"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "command-runner.addCommand",
+        "title": "Add Command",
+        "icon": "$(add)"
+      },
+      {
+        "command": "command-runner.editCommand",
+        "title": "Edit Command",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "command-runner.deleteCommand",
+        "title": "Delete Command",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "command-runner.runCommand",
+        "title": "Run Command"
+      },
+      {
+        "command": "command-runner.selectPackageJson",
+        "title": "Select Package.json",
+        "icon": "$(package)"
+      },
+      {
+        "command": "command-runner.showPackageJsonInfo",
+        "title": "Show Package.json Info",
+        "icon": "$(info)"
+      },
+      {
+        "command": "command-runner.refreshPackageJsons",
+        "title": "Refresh Package.json Discovery",
+        "icon": "$(refresh)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "command-runner.addCommand",
+          "when": "view == command-runner-sidebar",
+          "group": "navigation@1"
+        },
+        {
+          "command": "command-runner.selectPackageJson",
+          "when": "view == command-runner-sidebar",
+          "group": "navigation@2"
+        },
+        {
+          "command": "command-runner.refreshPackageJsons",
+          "when": "view == command-runner-sidebar",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "command-runner.editCommand",
+          "when": "view == command-runner-sidebar && viewItem == commandItem",
+          "group": "inline"
+        },
+        {
+          "command": "command-runner.deleteCommand",
+          "when": "view == command-runner-sidebar && viewItem == commandItem",
+          "group": "inline"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "command-runner.selectPackageJson",
+          "title": "Command Runner: Select Package.json"
+        },
+        {
+          "command": "command-runner.showPackageJsonInfo",
+          "title": "Command Runner: Show Package.json Info"
+        },
+        {
+          "command": "command-runner.refreshPackageJsons",
+          "title": "Command Runner: Refresh Package.json Discovery"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run webpack",
+    "webpack": "webpack --config webpack.config.js",
+    "webpack-dev": "webpack --config webpack.config.js --mode development --watch",
+    "compile": "npm run webpack",
+    "watch": "npm run webpack-dev",
+    "pretest": "npm run webpack && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "echo 'Tests would run from compiled extension'",
+    "package": "npx vsce package",
+    "publish": "npx vsce publish",
+    "build": "npm run webpack && npm run package && code --install-extension npm-command-runner-0.0.1.vsix --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markoverano/npm-command-runner.git"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.2",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.83.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "@vscode/test-electron": "^2.3.4",
+    "@vscode/vsce": "^3.6.0",
+    "eslint": "^8.50.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  }
+}
