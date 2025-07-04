@@ -10,7 +10,7 @@ import { PackageJsonStatusBar } from "./packageJsonStatusBar";
 
 let packageJsonStatusBar: PackageJsonStatusBar;
 
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
   const discoveryService = new PackageJsonDiscoveryService();
   const smartDetectionService = new SmartDetectionService(discoveryService);
   packageJsonStatusBar = new PackageJsonStatusBar();
@@ -20,6 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
     smartDetectionService,
     packageJsonStatusBar
   );
+  await commandManager.initialize();
   const commandProvider = new CommandProvider(commandManager);
 
   context.subscriptions.push(

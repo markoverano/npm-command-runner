@@ -45,14 +45,13 @@ export class CommandManager {
         context: vscode.ExtensionContext,
         discoveryService: PackageJsonDiscoveryService,
         smartDetectionService: SmartDetectionService,
-        packageJsonStatusBar: PackageJsonStatusBar 
+        packageJsonStatusBar: PackageJsonStatusBar
     ) {
         this.context = context;
         this.discoveryService = discoveryService;
         this.smartDetectionService = smartDetectionService;
-        this.packageJsonStatusBar = packageJsonStatusBar; 
+        this.packageJsonStatusBar = packageJsonStatusBar;
         this.preferences = this.loadPreferences();
-        this.initializeCurrentPackageJson();
     }
 
     /**
@@ -125,24 +124,27 @@ export class CommandManager {
     /**
      * Initialize the current package.json from saved state or auto-detect
      */
-    private async initializeCurrentPackageJson(): Promise<void> {
-        
-        const savedPath = this.context.globalState.get<string>(CommandManager.SELECTED_PACKAGE_KEY);
+    public async initialize(): Promise<void> {
+        const savedPath = this.context.globalState.get<string>(
+            CommandManager.SELECTED_PACKAGE_KEY
+        );
         if (savedPath) {
             try {
-                const packageInfo = await this.discoveryService.parsePackageJson(savedPath, 0);
+                const packageInfo = await this.discoveryService.parsePackageJson(
+                    savedPath,
+                    0
+                );
                 if (packageInfo) {
                     this.currentPackageJson = packageInfo;
+                    this.packageJsonStatusBar.updateStatus(this.currentPackageJson);
                     return;
                 }
             } catch {
-                
+                //
             }
         }
 
-        
         await this.autoDetectPackageJson();
-        this.packageJsonStatusBar.updateStatus(this.currentPackageJson);
     }
 
     /**

@@ -2,7 +2,7 @@
   "name": "npm-command-runner",
   "displayName": "NPM Command Runner",
   "description": "A VS Code extension to manage and run custom npm commands with one click.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "markoverano",
   "engines": {
     "vscode": "^1.83.0"
@@ -124,7 +124,7 @@
     "test": "echo 'Tests would run from compiled extension'",
     "package": "npx vsce package",
     "publish": "npx vsce publish",
-    "build": "npm run webpack && npm run package && code --install-extension npm-command-runner-0.0.1.vsix --force"
+    "build": "npm run webpack && npm run package && code --install-extension npm-command-runner-0.0.2.vsix --force"
   },
   "repository": {
     "type": "git",
